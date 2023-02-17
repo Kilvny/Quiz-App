@@ -26,11 +26,11 @@ const Root = () => {
       </ol>
 
       <form id="form" action="submit">
-        <input ref={inputRef} type="text" placeholder="username*" className="userid"/>
+        <input ref={inputRef} type="text" placeholder="username*" className="userid" />
       </form>
 
       <div className="start">
-        <Link className="btn" to={"quiz"} onClick={startQuiz}>Start Quiz</Link>
+        <Link className="btn" to={"quiz"} onClick={startQuiz} >Start Quiz</Link>
       </div>
     </div>
   );
