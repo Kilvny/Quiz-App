@@ -5,7 +5,7 @@ import ResultTable from './ResultTable'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetAction } from '../redux/questionsReducer'
 import { resetResult } from '../redux/resultReducer'
-import { attemptsNumber, checkPassed, correctAnswers } from '../hooks/helpers'
+import { attemptsNumber, checkPassed, correctAnswers, usePostResult } from '../hooks/helpers'
 
 const Result = () => {
 
@@ -15,6 +15,20 @@ const Result = () => {
     const attempts = attemptsNumber(score)
     const userScore = correctAnswers(score,answers, 10)
     const threshold = checkPassed(totalScore, userScore)
+
+    // Save user's result 
+    usePostResult({
+      result: [totalScore],
+      username: userId,
+      score: userScore,
+      passed: threshold,
+    },[]);
+    console.log({
+      result: [totalScore],
+      username: userId,
+      score: userScore,
+      passed: threshold,
+    });
 
     useEffect(()=> {
         console.log(score)
